@@ -7,8 +7,6 @@ public class FootTargetEditor : Editor
 {
     private void OnSceneGUI()
     {
-        
-
         Handles.matrix = Matrix4x4.identity;
         Handles.color = Color.green;
         EditorGUI.BeginChangeCheck();
@@ -22,7 +20,6 @@ public class FootTargetEditor : Editor
                  targetScript.transform.position,
                  targetScript.moveDistanceThreshold
              );
-
 
 
             if (EditorGUI.EndChangeCheck())
