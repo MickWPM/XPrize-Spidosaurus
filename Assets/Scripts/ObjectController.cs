@@ -13,9 +13,12 @@ public class ObjectController : MonoBehaviour
         lookAction = InputSystem.actions.FindAction("Look");
     }
 
+    private bool moving = false;
     private void Update()
     {
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
+        moving = moveValue.sqrMagnitude > 0.01f;
+
         Vector2 lookValue = lookAction.ReadValue<Vector2>();
 
         transform.Rotate(transform.up, moveValue.x * Time.deltaTime * rotationSpeed); 
@@ -23,4 +26,6 @@ public class ObjectController : MonoBehaviour
 
         headTransform.Rotate(headTransform.up, lookValue.x);
     }
+
+    public bool Moving { get => moving; }
 }
