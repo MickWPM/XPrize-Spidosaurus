@@ -17,7 +17,6 @@ public class FootTargetPlacement : MonoBehaviour
         }
     }
 
-    Vector3 newPos;
     private void Update()
     {
         RaycastHit hit;
@@ -25,15 +24,9 @@ public class FootTargetPlacement : MonoBehaviour
         Vector3 rayDirection = -transform.up;
 
         if (Physics.Raycast(rayOrigin, rayDirection, out hit, 2f, footPlacementLayerMask))
-        {
-            Debug.Log($"Hit {hit.collider.gameObject.name}");
-            newPos = hit.point; 
-            transform.position = newPos;
+        { 
+            transform.position = hit.point;
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawCube(newPos, Vector3.one * 0.1f);
-    }
 }
